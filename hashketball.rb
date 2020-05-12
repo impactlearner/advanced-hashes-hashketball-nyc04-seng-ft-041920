@@ -1,9 +1,10 @@
 # Write your code below game_hash
+require ('pry')
 def game_hash
   {
     home: {
       team_name: "Brooklyn Nets",
-      colors: ["Black", "White"],
+      team_colors: ["Black", "White"],
       players: [
         {
           player_name: "Alan Anderson",
@@ -64,7 +65,7 @@ def game_hash
     },
     away: {
       team_name: "Charlotte Hornets",
-      colors: ["Turquoise", "Purple"],
+      team_colors: ["Turquoise", "Purple"],
       players: [
         {
           player_name: "Jeff Adrien",
@@ -125,5 +126,27 @@ def game_hash
     }
   }
 end
+
+def all_players
+  all_players = game_hash.map do |location, attributes|
+    attributes[:players]
+  end.flatten
+end
+
+def player (player_name)
+  all_players.find do |player_hash|
+    player_hash[:player_name] == player_name
+  end
+end
+
+def num_points_scored (player_name)
+  player(player_name)[:points]
+end
+
+def shoe_size (player_name)
+  player(player_name)[:shoe]
+end
+
+num_points_scored("Reggie Evans")
 
 # Write code here
